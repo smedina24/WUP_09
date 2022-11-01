@@ -36,7 +36,23 @@ Perch <- select(Perch, -Species)
 
 ### Best Two regressor model
 
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Perch,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
 
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
+```
+
+This chart indicates that the best regression model is the one above the two. Height and weight has the highest Adjusted R 2 value at 0.9400. The second best regression model with the highest adjusted R 2 value is the one above the 3 it is at 0.9390. 
 ## Bream  
 
 ### Best Models
