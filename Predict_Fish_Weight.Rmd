@@ -65,11 +65,38 @@ summary.lm(Pmodel)
 ```
 
 After comparing the 3 regression model with the two regression model the summaries indicate that the two regression model has a lower residual standard error and a higher adjusted R- squared value. Thus, confirming that the best regression model is the two regression model.
+
 ## Bream  
+
+```{r}
+Fish <- read.csv(file= "Fish.csv")
+
+Bream <- filter(Fish, Species == "Bream")
+
+Bream <- select(Bream, -Species)
+```
 
 ### Best Models
 
 ### Best Two regressor model
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Bream,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+The best regression model shown by this chart is the one above the 3. The regression model above the three has the highest adjust R squared value.
 
 ## Roach
 
