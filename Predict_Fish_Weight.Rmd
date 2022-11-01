@@ -21,7 +21,16 @@ require(tidyverse)
 # Predicting Fish Weight
 
 
-## Perch
+## Perch  
+
+```{r}
+Fish <- read.csv(file= "Fish.csv")
+
+Perch <- filter(Fish, Species == "Perch")
+
+Perch <- select(Perch, -Species)
+```
+
 
 ### Best Models
 
