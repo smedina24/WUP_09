@@ -53,6 +53,18 @@ subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
 ```
 
 This chart indicates that the best regression model is the one above the two. Height and weight has the highest Adjusted R 2 value at 0.9400. The second best regression model with the highest adjusted R 2 value is the one above the 3 it is at 0.9390. 
+
+```{r}
+Perchmodel <- lm(Weight ~ Height + Width, data = Perch)
+summary.lm(Perchmodel)
+```
+
+```{r}
+Pmodel <- lm(Weight ~ Height + Width + Length1, data = Perch)
+summary.lm(Pmodel)
+```
+
+After comparing the 3 regression model with the two regression model the summaries indicate that the two regression model has a lower residual standard error and a higher adjusted R- squared value. Thus, confirming that the best regression model is the two regression model.
 ## Bream  
 
 ### Best Models
