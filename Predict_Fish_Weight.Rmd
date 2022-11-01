@@ -52,7 +52,7 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
 ```
 
-This chart indicates that the best regression model is the one above the two. Height and weight has the highest Adjusted R 2 value at 0.9400. The second best regression model with the highest adjusted R 2 value is the one above the 3 it is at 0.9390. 
+This chart indicates that the best regression model is the one above the two. Height and weight has the highest Adjusted R 2 value at 0.9400. The second best regression model with the highest adjusted R 2 value is the one above the 3 it is at 0.9390. The overall best regression model is the one with two regressions .  
 
 ```{r}
 Perchmodel <- lm(Weight ~ Height + Width, data = Perch)
@@ -96,7 +96,21 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
 
-The best regression model shown by this chart is the one above the 3. The regression model above the three has the highest adjust R squared value.
+The best two regression model shown by this chart is Length 2 and height which is above the two. The best 3 regression model is Length 1 height and width. The overall best regression model is the three regression model.
+
+
+```{r}
+Breammodel <- lm(Weight ~ Height + Length2, data = Bream)
+summary.lm(Breammodel)
+```
+
+```{r}
+Breammodel <- lm(Weight ~ Height + Width + Length1, data = Bream)
+summary.lm(Breammodel)
+```
+
+
+
 
 ## Roach
 
